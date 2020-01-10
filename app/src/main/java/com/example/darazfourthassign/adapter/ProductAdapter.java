@@ -15,10 +15,11 @@ import com.example.darazfourthassign.model.Products;
 
 import java.util.List;
 
-public class productadapter extends RecyclerView.Adapter<productadapter.ItemViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ItemViewHolder> {
     List<Products> productsLis;
 
-    public productadapter(Context context, List<Products> productsLis) {
+
+    public ProductAdapter(Context context, List<Products> productsLis) {
         this.productsLis = productsLis;
     }
 

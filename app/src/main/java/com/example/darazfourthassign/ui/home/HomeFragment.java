@@ -5,19 +5,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.darazfourthassign.R;
-import com.example.darazfourthassign.adapter.productadapter;
-import com.example.darazfourthassign.adapter.slideradapter;
+import com.example.darazfourthassign.adapter.ProductAdapter;
+import com.example.darazfourthassign.adapter.SliderAdapter;
 import com.example.darazfourthassign.model.Products;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -37,7 +33,7 @@ public class HomeFragment extends Fragment {
         sliderView = view.findViewById(R.id.Slider);
         recyclerView = view.findViewById(R.id.RecyclerView);
 
-        final slideradapter adapter = new slideradapter(getContext());
+        final SliderAdapter adapter = new SliderAdapter(getContext());
         adapter.setCount(3);
         sliderView.setSliderAdapter(adapter);
 
@@ -54,7 +50,7 @@ public class HomeFragment extends Fragment {
         productsList.add(new Products(R.drawable.darazz,"Item description",1400));
         productsList.add(new Products(R.drawable.darazz,"Item description",1500));
 
-        final productadapter productadapters=new productadapter(getContext(),productsList);
+        final ProductAdapter productadapters=new ProductAdapter(getContext(),productsList);
         recyclerView.setAdapter(productadapters);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         return view;

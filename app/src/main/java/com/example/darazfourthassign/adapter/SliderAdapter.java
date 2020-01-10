@@ -11,12 +11,12 @@ import com.bumptech.glide.Glide;
 import com.example.darazfourthassign.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
-public class slideradapter extends SliderViewAdapter<slideradapter.SliderAdapterVH> {
+public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapterVH> {
 
     private Context context;
     private int count;
 
-    public slideradapter(Context context) {
+    public SliderAdapter(Context context) {
         this.context = context;
     }
 

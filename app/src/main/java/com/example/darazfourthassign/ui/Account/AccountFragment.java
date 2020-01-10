@@ -1,6 +1,7 @@
 package com.example.darazfourthassign.ui.Account;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,7 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.darazfourthassign.ConnectActivity;
 import com.example.darazfourthassign.R;
 
 /**
@@ -16,6 +19,7 @@ import com.example.darazfourthassign.R;
  */
 public class AccountFragment extends Fragment {
 
+    Button btnLS;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -26,7 +30,18 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        btnLS = view.findViewById(R.id.btnSignInUp);
+
+        btnLS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ConnectActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 
 }
+
