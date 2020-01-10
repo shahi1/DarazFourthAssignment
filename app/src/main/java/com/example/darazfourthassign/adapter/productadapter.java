@@ -10,9 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.darazfourthassign.R;
+import com.example.darazfourthassign.model.Products;
+
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<productadapter.ItemViewHolder> {
+public class productadapter extends RecyclerView.Adapter<productadapter.ItemViewHolder> {
     List<Products> productsLis;
 
     public productadapter(Context context, List<Products> productsLis) {

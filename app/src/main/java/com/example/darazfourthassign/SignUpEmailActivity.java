@@ -10,6 +10,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.darazfourthassign.api.UserAPI;
+import com.example.darazfourthassign.model.Users;
+import com.example.darazfourthassign.serverresponse.SignUpResponse;
+import com.example.darazfourthassign.url.Url;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

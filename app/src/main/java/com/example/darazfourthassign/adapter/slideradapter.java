@@ -7,7 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class SliderAdapter extends SliderViewAdapter<slideradapter.SliderAdapterVH> {
+import com.bumptech.glide.Glide;
+import com.example.darazfourthassign.R;
+import com.smarteist.autoimageslider.SliderViewAdapter;
+
+public class slideradapter extends SliderViewAdapter<slideradapter.SliderAdapterVH> {
 
     private Context context;
     private int count;

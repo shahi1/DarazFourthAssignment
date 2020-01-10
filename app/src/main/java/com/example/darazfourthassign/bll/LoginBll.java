@@ -2,12 +2,13 @@ package com.example.darazfourthassign.bll;
 
 import com.example.darazfourthassign.api.UserAPI;
 import com.example.darazfourthassign.serverresponse.SignUpResponse;
+import com.example.darazfourthassign.url.Url;
 
 import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Response;
-import retrofit2.http.Url;
+
 
 public class LoginBll {
 
