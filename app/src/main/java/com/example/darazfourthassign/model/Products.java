@@ -1,38 +1,38 @@
 package com.example.darazfourthassign.model;
 
 public class Products {
-    private String Description;
-    private int Image;
-    private float Price;
+    private String itemName;
+    private String Picture;
+    private float price;
 
-    public Products( int image,String description, float price) {
-        Description = description;
-        Image = image;
-        Price = price;
+    public Products( String image,String itemName, float price) {
+        itemName = itemName;
+        Picture = image;
+        price = price;
     }
 
     public String getDescription() {
-        return Description;
+        return itemName;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        itemName = description;
     }
 
-    public int getImage() {
-        return Image;
+    public String getImage() {
+        return Picture;
     }
 
-    public void setImage(int image) {
-        Image = image;
+    public void setImage(String image) {
+        Picture = image;
     }
 
     public float getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(float price) {
-        Price = price;
+        price = price;
     }
 }
 

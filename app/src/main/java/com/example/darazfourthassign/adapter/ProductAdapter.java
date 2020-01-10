@@ -12,15 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.darazfourthassign.R;
 import com.example.darazfourthassign.model.Products;
+import com.example.darazfourthassign.url.Url;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ItemViewHolder> {
     List<Products> productsLis;
+    Context context;
 
 
     public ProductAdapter(Context context, List<Products> productsLis) {
         this.productsLis = productsLis;
+        this.context=context;
     }
 
     @NonNull
@@ -33,7 +37,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ItemView
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         final Products products=productsLis.get(position);
-        holder.imgImage.setImageResource(products.getImage());
+        Picasso.get().load(Url.base_url_image+productsLis.get(position).getImage()).into(holder.imgImage);
         holder.tvDescription.setText(products.getDescription());
         holder.tvRate.setText("Rs" + products.getPrice());
     }

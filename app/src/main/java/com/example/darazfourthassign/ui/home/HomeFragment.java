@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,13 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.darazfourthassign.R;
 import com.example.darazfourthassign.adapter.ProductAdapter;
 import com.example.darazfourthassign.adapter.SliderAdapter;
+import com.example.darazfourthassign.api.ProductApi;
 import com.example.darazfourthassign.model.Products;
+import com.example.darazfourthassign.url.Url;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -44,15 +51,34 @@ public class HomeFragment extends Fragment {
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
         sliderView.startAutoCycle();
 
-        List<Products> productsList=new ArrayList<>();
-        productsList.add(new Products(R.drawable.facebook,"Item description",1200));
-        productsList.add(new Products(R.drawable.shirt1,"Item description",1300));
-        productsList.add(new Products(R.drawable.darazz,"Item description",1400));
-        productsList.add(new Products(R.drawable.darazz,"Item description",1500));
-
-        final ProductAdapter productadapters=new ProductAdapter(getContext(),productsList);
-        recyclerView.setAdapter(productadapters);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        getProduct();
         return view;
     }
-}
+
+
+        private void getProduct () {
+            ProductApi productApi = Url.getInstance().create(ProductApi.class);
+            Call<List<Products>> listCall = productApi.getProduct();
+            listCall.enqueue(new Callback<List<Products>>() {
+                @Override
+                public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
+
+                    if (!response.isSuccessful()) {
+                        Toast.makeText(getContext(), "Toast " + response.code(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    ProductAdapter productadapter = new ProductAdapter(getActivity(), response.body());
+                    recyclerView.setAdapter(productadapter);
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                    productadapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onFailure(Call<List<Products>> call, Throwable t) {
+
+                    Toast.makeText(getActivity(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
