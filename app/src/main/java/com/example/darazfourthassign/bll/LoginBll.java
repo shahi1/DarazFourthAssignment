@@ -1,6 +1,6 @@
 package com.example.darazfourthassign.bll;
 
-import com.example.darazfourthassign.api.UserAPI;
+import com.example.darazfourthassign.api.UserApi;
 import com.example.darazfourthassign.serverresponse.SignUpResponse;
 import com.example.darazfourthassign.url.Url;
 
@@ -16,7 +16,7 @@ public class LoginBll {
 
     public boolean checkUser(String username, String password) {
 
-        UserAPI usersAPI = Url.getInstance().create(UserAPI.class);
+        UserApi usersAPI = Url.getInstance().create(UserApi.class);
         Call<SignUpResponse> usersCall = usersAPI.checkUser(username, password);
 
         try {

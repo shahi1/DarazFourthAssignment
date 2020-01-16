@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.darazfourthassign.api.UserAPI;
+import com.example.darazfourthassign.api.UserApi;
 import com.example.darazfourthassign.model.Users;
 import com.example.darazfourthassign.serverresponse.SignUpResponse;
 import com.example.darazfourthassign.url.Url;
@@ -75,7 +75,7 @@ public class SignUpEmailActivity extends AppCompatActivity {
 
                 Users users = new Users(Name, email, password,PhoneNo, SMS);
 
-                UserAPI usersAPI = Url.getInstance().create(UserAPI.class);
+                UserApi usersAPI = Url.getInstance().create(UserApi.class);
                 Call<SignUpResponse> signUpCall = usersAPI.registerUser(users);
 
                 signUpCall.enqueue(new Callback<SignUpResponse>() {
